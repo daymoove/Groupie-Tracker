@@ -1,0 +1,32 @@
+body {
+    display : flex;
+    align-items : center;
+    justify-content : center;  
+    background: #232427;
+}
+  .bouton {
+    background:transparent;
+    border: none !important;
+    font-size:0;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 1400px;
+    top: 25px;
+}
+.maison {
+  width: 100px;
+  position: absolute;
+  left: 1400px;
+  top: 25px;
+}
+.result {
+  text-align: center;
+  color: #ffff;
+}
+h1 {
+  font-size: 50px;
+}
+h2 {
+  font-size: 20px;
+}

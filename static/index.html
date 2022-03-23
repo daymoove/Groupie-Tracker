@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/index.css">
+    <title>Groupie Tracker</title>
+    <script src="/static/searchbar.js"></script>
+</head>
+
+<body>
+
+    <ul class="Navigation">
+        <div class="input">
+            <p class="search">Search</p>
+            <input type="text"/>
+            <form method="POST" action="/">
+        </div>
+            <div class="creation">
+                <p>Creation date</p>
+                <span id="rangeValue">0</span>
+                <Input class="range" type="range" name="creation" value="0" min="1957" max="2015"
+                    onChange="rangeSlide(this.value)" onmousemove="rangeSlide('rangeValue', this.value)"></Input>
+            </div>
+            <div class="album">
+                <p>First album</p>
+                <span id="rangeValue2">0</span>
+                <Input class="range" type="range" name="first" value="0" min="1962" max="2018"
+                    onChange="rangeSlide(this.value)" onmousemove="rangeSlide('rangeValue2', this.value)"></Input>
+            </div>
+            <script type="text/javascript">
+                function rangeSlide(id, value) {
+                    document.getElementById(id).innerHTML = value;
+                }
+            </script>
+            <div class="membre">
+                <p>number of menbers</p>
+                <INPUT type="checkbox" name="choix" value="1"> 1
+                <INPUT type="checkbox" name="choix" value="2"> 2
+                <INPUT type="checkbox" name="choix" value="3"> 3
+                <INPUT type="checkbox" name="choix" value="4"> 4
+                <INPUT type="checkbox" name="choix" value="5"> 5
+                <INPUT type="checkbox" name="choix" value="6"> 6
+                <INPUT type="checkbox" name="choix" value="7"> 7
+                <INPUT type="checkbox" name="choix" value="8"> 8
+            </div>
+            <div class="location">
+                <p>Location</p>
+                <select name="location" id="select-location">
+                    <option value="">--Choose a location--</option>
+                    {{ range .TabList }}
+                    <option value="{{.}}">{{.}}</option>
+                    {{ end }}
+                </select>
+            </div>
+            <button class="Button">
+                Envoyer
+            </button>
+        </form>
+    </ul>
+
+    <br></br>
+    <h1 class="title">Groupie Tracker</h1>
+    </div>
+    <div id="card">
+        <div class="container">
+            {{ range .TabArtist }}
+            <div class="card">
+                <div class="box">
+                    <div class="content">
+                        <h3 id="name">{{ .Name }}</h3>
+                        <img class="image" src="{{ .Image }}">
+                        <h3> Member </h3>
+                        <p id="member">{{ range .Member }}
+                            {{ . }},
+                            {{end}}
+                            <br></br>
+                        </p>
+                        <h3>Creation date</h3>
+                        <p id="createDate">{{ .CreationDate}}</p>
+                        <br></br>
+                        <h3>First Album</h3>
+                        <p id="albumDate">{{ .FirstAlbum}}</p>
+                        <br></br>
+                        <form method="POST" action="/">
+
+                            <button class="myButton" name="ID" value="Relations {{ .Id }}">
+                                Relation
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</body>
